@@ -1,7 +1,8 @@
 $(document).ready(function(){
     const ctx = document.getElementById('dashboard').getContext("2d");
+    
 
-    new Chart(ctx, {
+   var chartdash= new Chart(ctx, {
       type: 'bar',
       data: {
         labels: ['Republic', 'Democrat', 'Liberal', 'Green', 'Independent', 'Others'],
@@ -41,13 +42,12 @@ $(document).ready(function(){
     ]
       },
       options: {
-        legend: {
-            labels: {
-                background:"white",
-                fontColor: "white",
-                fontSize: 18
-            }
-        },
+        plugins: {
+            legend: {
+                display: false
+            },
+        }
+        ,
         scales: {
             y: {  // not 'yAxes: [{' anymore (not an array anymore)
                 ticks: {
@@ -74,6 +74,36 @@ $(document).ready(function(){
         }
     }
     });
+
+    const ctxMet1 = document.getElementById('met1').getContext("2d");
+
+   var tilechart=new Chart(ctxMet1,{
+        type:'doughnut',
+        data:{
+            labels:['White','Black','Hispanic','Indian','Asian','Others'],
+            datasets:[{
+                label: 'Ethnicity%',
+                data: [35, 27, 10,8,5,15],
+                backgroundColor: [
+                  'rgb(255, 99, 132)',
+                  'rgb(54, 162, 235)',
+                  'rgb(255, 205, 86)',
+                  'rgb(28, 228, 217)',
+                  'rgba(247, 111, 10, 0.8)',
+                  'rgba(234, 3, 246, 0.8)'
+                ]
+                
+            }]
+            
+        },
+        options:{
+            plugins: {
+                legend: {
+                    display: false
+                },
+            }
+        }
+    })
 
 
  });
